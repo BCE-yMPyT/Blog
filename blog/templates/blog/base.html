@@ -14,7 +14,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
+	
   <!-- Custom styles for this template -->
   <link href="{% static 'css/blog-home.css' %}" rel="stylesheet">
   
@@ -34,6 +34,12 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           
+		  {% if user.is_authenticated %}
+			  <li class="nav-item">
+			  	<a href="{% url 'post_new' %}" class="nav-link">+</a>
+			  </li>
+		  {% endif %}
+		  
           <li class="nav-item">
             <a class="nav-link" href="../about us/about_us.html">About Us</a>
           </li>
@@ -66,16 +72,6 @@
 		
 		{% block content %}
 		{% endblock %}     
-
-        <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
-          <li class="page-item">
-            <a class="page-link" href="#">&larr; Older</a>
-          </li>
-          <li class="page-item disabled">
-            <a class="page-link" href="#">Newer &rarr;</a>
-          </li>
-        </ul>
 
       </div>
 
